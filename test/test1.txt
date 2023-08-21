@@ -1,0 +1,56 @@
+python
+# This is a python code to read files and remove tailing space
+# It takes a file name as an argument and returns a list of lines without extra spaces at the end
+def read_file_and_remove_tailing_space(file_name):
+  # Open the file in read mode
+  file = open(file_name, "r")
+  # Initialize an empty list to store the lines
+  lines = []
+  # Loop through each line in the file
+  for line in file:
+    # Strip the line of any whitespace at the end
+    line = line.rstrip()
+    # Append the line to the list
+    lines.append(line)
+  # Close the file
+  file.close()
+  # Return the list of lines
+  return lines
+
+
+To read user input and check if it is a dictionary or a file, you can use the following Python code:
+
+# Import the json module to parse dictionaries
+import json
+
+# Prompt the user to enter some input
+user_input = input("Please enter a dictionary or a file name: ")
+
+# Try to parse the input as a dictionary using json.loads
+try:
+    user_dict = json.loads(user_input)
+    print("The input is a valid dictionary.")
+except json.JSONDecodeError:
+    # If the input is not a valid dictionary, try to open it as a file
+    try:
+        user_file = open(user_input, "r")
+        print("The input is a valid file.")
+        user_file.close()
+    except FileNotFoundError:
+        # If the input is not a valid file, print an error message
+        print("The input is neither a dictionary nor a file.")
+
+
+import sys
+
+def check_input(input_str):
+  if isinstance(input_str, dict):
+    return "dictionary"
+  elif isinstance(input_str, file):
+    return "file"
+  else:
+    return "unknown"
+
+if __name__ == "__main__":
+  input_str = sys.argv[1]
+  print(check_input(input_str))

@@ -1,0 +1,23 @@
+python                            
+# python code to open a dictionary and all files under this dictionary then remove tailing space. save the new file                
+                   
+import os                 
+                     
+# define the dictionary path
+dict_path = "C:/Users/Example/Documents"            
+              
+
+# loop through all files in the dictionary
+for file in os.listdir(dict_path):
+    # get the full file path
+    file_path = os.path.join(dict_path, file)                         
+    # open the file in read mode
+    with open(file_path, "r") as f:
+        # read the file content as a list of lines
+        lines = f.readlines()          
+    # open the file in write mode            
+    with open(file_path, "w") as f:
+        # loop through each line
+        for line in lines:
+            # remove the tailing space and write the line to the file              
+            f.write(line.rstrip() + "\n")                 
