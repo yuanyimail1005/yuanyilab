@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 x_train = x_train.astype("float32") / 255
-y_train = y_train.astype("float32") / 255
+x_test = x_test.astype("float32") / 255
 
 print(x_train.shape)
 print(y_train.shape)
@@ -40,5 +40,5 @@ model.compile(
     metrics=["accuracy"],
 )
 
-model.fit(x_train, y_train, batch_size=64, epochs=5, verbose=2)
+model.fit(x_train, y_train, batch_size=64, epochs=20, verbose=2)
 model.evaluate(x_test, y_test, batch_size=64, verbose=2)
